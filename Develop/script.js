@@ -10,17 +10,18 @@ const keys = {
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
   var passwordText = document.querySelector("#password");
+  var password = generatePassword();
   var passwordCharacterSet = "";
+
   
-  
-  function generatePassword() {
-    var length = window.confirm("Enter a number from 8 to 128 characters to determine password length")
+function generatePassword() {
+    var length = window.prompt("Enter a number from 8 to 128 characters to determine password length")
     var lowercasePassword = window.confirm("Would you like the password to contain lowercase options?")
-    var uppserCasePassword = window.confirm("Would you like any uppercase letters in the password?")
+    var upperCasePassword = window.confirm("Would you like any uppercase letters in the password?")
     var symbols = window.confirm("Would you like the password to have symbols?")
-    var numbers = window.confirm("Woudl you like the password to contain any numbers?")
+    var numbers = window.confirm("Would you like the password to contain any numbers?")
+    var password = ""
 
     if (lowercasePassword) {
     passwordCharacterSet += keys.lowercase;
@@ -39,11 +40,11 @@ function writePassword() {
         }
 
     for (let i = 0; i < length; i++) {
-    password += passwordCharacterSet[Math.floor(Math.random(passwordCharacterSet.length))]
+      password += passwordCharacterSet[Math.floor(Math.random()*passwordCharacterSet.length)]
   }
-  return password
+ 
   passwordText.value = password;
-  console.log(generatePassword)
+  return password
 }
 }
 // Add event listener to generate button
